@@ -32,6 +32,15 @@ import java.util.Calendar;
 
 
 public class Simplesetting5 extends AppCompatActivity {
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(
+                getApplicationContext(), Simplesetting4.class
+        );
+        startActivity(intent);
+    }
+
     public static Context sContext;
     public AlarmManager alarmManager;
     public PendingIntent mPendingIntent1;
@@ -192,7 +201,10 @@ public class Simplesetting5 extends AppCompatActivity {
                 Intent intent1 = new Intent(
                         getApplicationContext(), MainActivity.class
                 );
+                intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent1);
+                finish();
 
             }
         });
@@ -204,6 +216,7 @@ public class Simplesetting5 extends AppCompatActivity {
                         getApplicationContext(), Simplesetting4.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
     }

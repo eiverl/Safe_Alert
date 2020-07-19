@@ -47,6 +47,15 @@ public class Detailsetting extends AppCompatActivity {
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(
+                getApplicationContext(), MainActivity.class
+        );
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailsetting);
@@ -92,6 +101,7 @@ public class Detailsetting extends AppCompatActivity {
                         getApplicationContext(), MainActivity.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -102,6 +112,7 @@ public class Detailsetting extends AppCompatActivity {
                         getApplicationContext(), MainActivity.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
     }

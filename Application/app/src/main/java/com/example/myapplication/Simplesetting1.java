@@ -16,6 +16,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class Simplesetting1 extends AppCompatActivity {
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(
+                getApplicationContext(), Simplesetting.class
+        );
+        startActivity(intent);
+    }
+
     ArrayAdapter<CharSequence> adspin1, adspin2;    //Adapter
     String choice_do="";
     String choice_si="";
@@ -341,6 +350,7 @@ public class Simplesetting1 extends AppCompatActivity {
                         getApplicationContext(), Simplesetting2.class
                 );
                 startActivity(intent1);
+                finish();
             }
         });
 
@@ -351,6 +361,7 @@ public class Simplesetting1 extends AppCompatActivity {
                         getApplicationContext(), Simplesetting.class
                 );
                 startActivity(intent);
+                finish();
             }
 
         });

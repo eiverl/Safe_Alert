@@ -11,6 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Simplesetting2 extends AppCompatActivity {
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(
+                getApplicationContext(), Simplesetting1.class
+        );
+        startActivity(intent);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simplesetting2);
@@ -39,6 +47,7 @@ public class Simplesetting2 extends AppCompatActivity {
                         getApplicationContext(), Simplesetting3.class
                 );
                 startActivity(intent1);
+                finish();
             }
         });
 
@@ -49,6 +58,7 @@ public class Simplesetting2 extends AppCompatActivity {
                         getApplicationContext(), Simplesetting1.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
 

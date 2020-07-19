@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(), Simplesetting.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
         b.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(), Sub1.class
                 );
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(), Detailsetting.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -102,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                         getApplicationContext(), Alarmreport.class
                 );
                 startActivity(intent);
+                finish();
             }
         });
 
