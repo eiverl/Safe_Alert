@@ -4,8 +4,11 @@ package com.example.myapplication;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -33,8 +36,10 @@ public class Detailsetting extends AppCompatActivity {
     List<String> mListPairedDevices;
 
     Button mBtnBluetooth;
+    Button button23;
     TextView mTvBluetoothStatus;
     TextView textView37;
+    TextView textView10;
 
     Handler mBluetoothHandler;
     Detailsetting.ConnectedBluetoothThread mThreadConnectedBluetooth;
@@ -66,6 +71,8 @@ public class Detailsetting extends AppCompatActivity {
         mBtnBluetooth = (Button)findViewById(R.id.blue);
         mTvBluetoothStatus = (TextView)findViewById(R.id.textView32);
         textView37 = (TextView)findViewById(R.id.textView37);
+        textView10 = (TextView)findViewById(R.id.textView10);
+        button23 = (Button)findViewById(R.id.button23);
 
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -92,6 +99,20 @@ public class Detailsetting extends AppCompatActivity {
             }
         };
 
+        button23.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int status = NetworkStatus.getConnectivityStatus(getApplicationContext());
+                if(status == NetworkStatus.TYPE_MOBILE){
+                    textView10.setText("OK");
+                }else if (status == NetworkStatus.TYPE_WIFI){
+                    textView10.setText("OK");
+                }else {
+                    textView10.setText("NOT CONNECT");
+                }
+
+            }
+        });
 
 
         After.setOnClickListener(new View.OnClickListener(){
@@ -255,4 +276,7 @@ public class Detailsetting extends AppCompatActivity {
             }
         }
     }
+
+
 }
+

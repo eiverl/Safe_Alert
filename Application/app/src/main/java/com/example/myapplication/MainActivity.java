@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    SharedPreferences add_pref;
+
     public static Context checkContext;
     String[] permission_list = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -31,9 +33,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         checkContext = this;
-
         // 권한확인
         checkPermission();
+
+        SharedPreferences prefs = getSharedPreferences("isFirstRun", Activity.MODE_PRIVATE);
+        boolean isFirstRun = prefs.getBoolean("isFirstRun", true);
+        if(isFirstRun)
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("처음 실행했습니다.");
+            builder.setMessage("사용설명을 읽어주시고, 간편설정을 버튼을 눌러 사용자 정보를 등록해주십시오.");
+            builder.setNeutralButton("확인", null);
+            builder.create().show();
+            Toast.makeText(getApplicationContext(),"test",Toast.LENGTH_LONG).show();
+
+            prefs.edit().putBoolean("isFirstRun", false).apply();
+        }
 
         TextView addressView = (TextView)findViewById(R.id.text_address);
         TextView nameView = (TextView)findViewById(R.id.text_Name);
